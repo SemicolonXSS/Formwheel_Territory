@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formwheel Territory</title><link rel="icon" href="https://semicolonxss.github.io/Formwheel/assets/formwheel-favicon.svg"><link rel="stylesheet" href="https://semicolonxss.github.io/Formwheel/assets/formwheel-brand.css"><style>
 :root{font-family:system-ui,Arial;background:#f7f8fc;color:#202638}*{box-sizing:border-box}body{margin:0}header{display:flex;align-items:center;justify-content:space-between;padding:14px clamp(12px,4vw,42px);background:#fff;border-bottom:1px solid #e1e5ee}header a{color:#2867e8;text-decoration:none;font-weight:800}.wrap{max-width:1060px;margin:auto;padding:20px}h1{margin:8px 0;font-size:clamp(26px,4vw,44px)}h2{font-size:21px}p{line-height:1.6;color:#5f6880}.panel{background:#fff;border:1px solid #dfe5ef;border-radius:18px;padding:18px;margin:14px 0}.options,.toolbar,.stats{display:flex;flex-wrap:wrap;gap:9px;align-items:center}button,select,input{font:inherit;border-radius:10px;padding:11px 13px;border:1px solid #d9e2f1;background:#eef3ff;color:#1f3560}button{cursor:pointer;font-weight:700}button:hover{background:#dce8ff}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:#2867e8;border-color:#2867e8;color:white}.active{outline:2px solid #89bcff}.board{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;max-width:620px;aspect-ratio:1; margin:auto}.tile{padding:0;min-width:0;display:grid;place-content:center;border-radius:9px;position:relative;color:white;font-weight:800;font-size:clamp(11px,2vw,22px);border:2px solid #ffffff22}.tile.sel{outline:3px solid #fff;outline-offset:-4px}.tile.legal{box-shadow:inset 0 0 0 3px #f7e17d}.tile.wall{background:#333c4d}.tile.neutral{background:#55647b}.tile.p0{background:#2379d7}.tile.p1{background:#d85158}.tile.p2{background:#19a37c}.tile.p3{background:#bf9426}.tile.base:before{content:"⌂";position:absolute;left:3px;top:0;font-size:clamp(13px,2.5vw,23px);color:#fff;text-shadow:0 1px 4px #000}.tile.special:after{content:"★";position:absolute;top:3px;right:4px;font-size:clamp(9px,1.6vw,15px);color:#f7dc7d}.gameLayout{display:grid;grid-template-columns:minmax(0,2fr) minmax(230px,1fr);gap:16px}.stat{padding:9px 11px;background:#eef3fc;border-radius:10px;font-size:13px}.message{min-height:45px;color:#9a5b04}.hidden{display:none!important}.help{color:#62718a;font-size:13px}.log{max-height:190px;overflow:auto;font-size:13px;color:#62718a}.log div{padding:5px 0;border-bottom:1px solid #dfe5ef}#setup label{display:inline-flex;align-items:center;gap:7px;margin:5px 12px 5px 0}select{max-width:100%}footer{text-align:center;padding:20px;color:#8398b6}@media(max-width:720px){.gameLayout{grid-template-columns:1fr}.wrap{padding:12px}.board{gap:3px}.tile{border-radius:5px}.panel{padding:12px}}
 .tile.eliminated{opacity:.45}.tile.p0{background:#348ce8}.tile.p1{background:#e96562}.tile.p2{background:#20aa87}.tile.p3{background:#d8a832}.panel .panel{background:#fafcff}.fw-hub-logo{display:inline-flex;align-items:center;gap:6px;font-weight:900;letter-spacing:-1px;font-size:19px}.fw-hub-icon{border:4px solid #2867e8;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;color:#2867e8;font-size:14px}.fw-hub-form{color:#2867e8}.fw-hub-wheel{color:#333}</style></head><body><header><a class="fw-hub-logo" href="https://semicolonxss.github.io/Formwheel/"><span class="fw-hub-form">Form</span><span class="fw-hub-icon" aria-hidden="true"></span><span class="fw-hub-wheel">Wheel</span></a><strong>⚔ Territory</strong><a href="https://semicolonxss.github.io/Formwheel/">HUB ↗</a></header><main class="wrap"><h1>Formwheel Territory</h1><p>선택은 비밀로, 결과는 동시에! 영토를 점령하는 전략 게임.</p>
-<section class="panel" id="setup"><h2>새 게임</h2><div class="options"><button data-mode="solo" class="active">🤖 솔로 AI</button><button data-mode="local2">👥 2인 한 기기</button><button data-mode="local4">👥 4인 한 기기</button><button data-mode="online2">🌐 온라인 2인</button><button data-mode="online4">🌐 온라인 4인</button></div><p class="help">한 기기 모드에서는 선택을 확정하면 자동으로 다음 플레이어 차례가 돼. 온라인 배틀은 각자 다른 기기에서 참여해.</p><div id="onlineLobby" class="hidden panel"><p id="onlineStatus">온라인 연결 준비 중…</p><div class="options"><button id="createRoom">방 만들기</button><input id="roomCode" maxlength="6" placeholder="6자리 방 코드" aria-label="방 코드"><button id="joinRoom">방 참가</button></div><p id="roomDetail"></p><button id="roomStart" class="hidden primary">방장 게임 시작</button></div><label>턴 수 <select id="rounds"><option value="10">10턴</option><option selected value="15">15턴</option><option value="20">20턴</option></select></label><label>AI 난이도 <select id="difficulty"><option value="easy">쉬움</option><option value="normal" selected>보통</option><option value="hard">어려움</option></select></label><label>맵 <select id="maptype"><option value="classic">클래식</option><option value="fortress">장애물</option><option value="rich">특별 지역</option></select></label><p><button id="start" class="primary">게임 시작 →</button></p></section>
+<section class="panel" id="setup"><h2>새 게임</h2><div class="options"><button data-mode="solo" class="active">🤖 솔로 AI</button><button data-mode="local2">👥 2인 한 기기</button><button data-mode="local4">👥 4인 한 기기</button><button data-mode="online2">🌐 온라인 2인</button><button data-mode="online4">🌐 온라인 4인</button></div><p class="help">한 기기 모드에서는 선택을 확정하면 자동으로 다음 플레이어 차례가 돼. 온라인 배틀은 각자 다른 기기에서 참여해.</p><div id="onlineLobby" class="hidden panel"><p id="onlineStatus">온라인 연결 준비 중…</p><div class="options"><button id="createRoom">방 만들기</button><input id="roomCode" maxlength="6" placeholder="6자리 방 코드" aria-label="방 코드"><button id="joinRoom">방 참가</button></div><p id="roomDetail"></p><button id="roomStart" class="hidden primary">방장 게임 시작</button></div><label>턴 수 <input id="rounds" type="number" min="10" max="60" step="1" value="20" inputmode="numeric" style="width:90px"> (10~60턴)</label><label>AI 난이도 <select id="difficulty"><option value="easy">쉬움</option><option value="normal" selected>보통</option><option value="hard">어려움</option><option value="expert">전문가</option><option value="master">마스터</option></select></label><label>맵 <select id="maptype"><option value="classic">클래식</option><option value="fortress">장애물</option><option value="rich">특별 지역</option></select></label><p><button id="start" class="primary">게임 시작 →</button></p></section>
 <section class="panel hidden" id="game"><div class="stats" id="stats"></div><div class="gameLayout"><div class="panel"><div id="board" class="board" role="group" aria-label="영토 지도"></div><p class="help">⌂ 중심 기지를 점령당하면 탈락! 연결이 끊긴 영토는 턴 종료 시 소멸해. ★ 핵심 지역은 3점. 검정색 장애물은 점령할 수 없어. 상하좌우만 인접해.</p></div><div class="panel"><h2 id="turnLabel">행동 선택</h2><p id="message" class="message" role="status"></p><div id="actionControls"><div class="options"><button data-action="expand" class="active">🏳 확장</button><button data-action="attack">⚔ 공격</button><button data-action="defend">🛡 방어</button></div><p class="help">행동을 고른 뒤 지도에서 대상 칸을 클릭해.</p><button id="commit" class="primary" disabled>선택 확정</button></div><div id="passPanel" class="hidden"></div><div id="resultPanel" class="hidden"><h2>🏆 게임 종료</h2><p id="winner"></p><button id="restart" class="primary">새 게임</button></div><h3>턴 기록</h3><div id="log" class="log"></div></div></div></section>
 <section class="panel"><h2>📖 규칙과 팁</h2><p>모든 플레이어는 턴마다 공격·방어·확장 중 하나를 선택해. 확장은 자기 영토와 인접한 중립 칸을 획득하고, 공격은 인접한 상대 영토를 빼앗아. 방어는 이번 턴 내 영토 전체를 보호해. 공격이 방어에 막히면 공격자는 다음 턴을 쉬어야 해. 중심 기지를 빼앗기면 즉시 탈락하며, 기지와 연결되지 않은 영토는 사라져. 동일 칸을 여러 명이 동시에 공격하거나 확장하면 서로 충돌해 모두 실패해. 턴 종료 시 영토 점수를 계산하고 마지막 턴의 최고 점수 플레이어가 승리해.</p><p class="help">솔로와 한 기기 모드는 로컬로 진행해. 온라인 방은 Firebase에 연결되며, 계정 업적·랭킹과 공식 서버 판정은 아직 지원하지 않아.</p></section></main><footer>© Formwheel · Territory</footer><script>
 "use strict";
@@ -18,21 +18,104 @@ function generate(type){cells=Array.from({length:N},()=>({owner:-1,wall:false,sp
 function setMessage(t){$("message").textContent=t}
 function render(){if(phase==="setup")return;$("stats").innerHTML='<span class="stat">턴 '+turn+'/'+maxTurn+'</span>'+COLORS.slice(0,n).map((name,p)=>'<span class="stat">'+name+': '+score(p)+'점 · '+owned(p).length+'칸</span>').join("");$("board").innerHTML="";const legal=phase==="choosing"&&!out[current]&&!penalty[current]?options(current,action):[];cells.forEach((c,i)=>{const b=document.createElement("button");b.type="button";b.className="tile "+(c.wall?"wall":c.owner===-1?"neutral":"p"+c.owner)+(c.special?" special":"")+(legal.includes(i)?" legal":"")+(target===i?" sel":"")+(bases.includes(i)?" base":"");b.textContent=c.wall?"▦":c.owner===-1?"":String(c.owner+1);b.setAttribute("aria-label",i+"번 칸, "+(c.wall?"장애물":c.owner===-1?"중립":COLORS[c.owner])+(c.special?", 핵심 지역":""));b.onclick=()=>{if(phase!=="choosing")return;if(!valid(current,action,i)){setMessage("이 행동으로 선택할 수 없는 칸이야.");return}target=i;$("commit").disabled=false;render()};$("board").appendChild(b)});$("turnLabel").textContent=phase==="finished"?"게임 종료":"턴 "+turn+" · "+COLORS[current]+"의 명령"+(penalty[current]?" (반격 페널티)":"");$("actionControls").classList.toggle("hidden",phase!=="choosing");$("passPanel").classList.toggle("hidden",phase!=="pass");$("resultPanel").classList.toggle("hidden",phase!=="finished");document.querySelectorAll("[data-action]").forEach(b=>b.classList.toggle("active",b.dataset.action===action));$("log").innerHTML=logs.slice(-18).reverse().map(t=>'<div>'+t.replaceAll("<","&lt;")+'</div>').join("")}
 function chooseStart(){phase="choosing";target=null;action="expand";$("commit").disabled=true;if(!mode.startsWith("online")&&(out[current]||penalty[current])){if(penalty[current]){penalty[current]--;logs.push(COLORS[current]+" 반격 불이익: 이번 턴 행동 불가")}orders[current]={p:current,a:"pass",i:-1};if(mode==="solo"){orders[1]=ai(1);resolve()}else advance();return}setMessage(COLORS[current]+" 플레이어: 명령과 대상 칸을 선택해.");render()}
-function ai(p){if(out[p]||penalty[p]){if(penalty[p])penalty[p]--;return {p,a:"pass",i:-1}}let priorities=difficulty==="easy"?["expand","attack","defend"]:["attack","expand","defend"];let moves=[];priorities.forEach(a=>options(p,a).forEach(i=>{let v=(a==="attack"?2.4:a==="expand"?2:0.4)+(cells[i].special?2.5:0)+Math.random()*(difficulty==="easy"?7:difficulty==="hard"?0.7:2.5);if(a==="attack"&&cells[i].owner===0)v+=difficulty==="hard"?2:0;moves.push({p,a,i,v})}));moves.sort((a,b)=>b.v-a.v);return moves[0]||{p,a:"pass",i:-1}}
+// Board-aware search: prioritize survival, core capture, cut points and connected territory.
+function territoryCount(board,p){return board.reduce((sum,c)=>sum+(c.owner===p?(c.special?3:1):0),0)}
+function coreConnected(board,p){if(board[bases[p]].owner!==p)return new Set();const visited=new Set([bases[p]]),queue=[bases[p]];while(queue.length){for(const j of neighbors(queue.shift()))if(board[j].owner===p&&!visited.has(j)){visited.add(j);queue.push(j)}}return visited}
+function projected(board,p,a,i){
+ const result=board.map(c=>({...c}));
+ if(a!=="defend"&&a!=="pass")result[i].owner=p;
+ const disconnected=[];
+ for(let q=0;q<n;q++){const connected=coreConnected(result,q);result.forEach((c,k)=>{if(c.owner===q&&!connected.has(k)){result[k].owner=-1;disconnected.push(k)}})}
+ return {board:result,disconnected};
+}
+function threat(board,p){
+ const hits=new Set();
+ for(let q=0;q<n;q++){if(q===p||out[q])continue;for(const i of options(q,"attack",board))hits.add(i)}
+ return hits;
+}
+function evaluateMove(p,a,i,board=cells){
+ const before=territoryCount(board,p),enemy=Array.from({length:n},(_,q)=>q).filter(q=>q!==p&&!out[q]);
+ if(a==="defend"){
+  const danger=threat(board,p);
+  let risk=0;
+  for(const t of danger){if(board[t].owner!==p)continue;
+   risk+=bases[p]===t?45:3;
+   const sim=projected(board,enemy.find(q=>valid(q,"attack",t,board))??p,"attack",t);
+   risk+=Math.max(0,before-territoryCount(sim.board,p))*1.4;
+  }
+  return risk?risk/(danger.size||1)+1:0;
+ }
+ const projectedState=projected(board,p,a,i),after=projectedState.board;
+ if(after[bases[p]].owner!==p)return -1000;
+ let v=(territoryCount(after,p)-before)*2.4;
+ for(const q of enemy){
+  if(after[bases[q]].owner!==q)v+=140;
+  else v+=(territoryCount(board,q)-territoryCount(after,q))*2.8;
+ }
+ if(board[i].special)v+=1.6;
+ if(a==="expand")v+=0.75;
+ // Prefer contested chokepoints, routes toward enemy bases, and sustainable expansion.
+ const ownReach=coreConnected(after,p);
+ v+=Math.min(2,neighbors(i).filter(j=>after[j].owner===-1&&!after[j].wall).length)*0.26;
+ const [x,y]=xy(i);
+ const proximity=Math.min(...enemy.map(q=>{const [bx,by]=xy(bases[q]);return Math.abs(x-bx)+Math.abs(y-by)}));
+ if(Number.isFinite(proximity))v+=(12-proximity)*0.16;
+ const enemyThreat=threat(after,p);
+ v-=enemyThreat.has(bases[p])?20:0;
+ if(enemyThreat.has(i))v-=1.1;
+ v-=Math.max(0,owned(p).length-ownReach.size)*0.5;
+ return v;
+}
+function ai(p){
+ if(out[p]||penalty[p]){if(penalty[p])penalty[p]--;return {p,a:"pass",i:-1}}
+ const levels={easy:{noise:8,depth:0},normal:{noise:3,depth:0},hard:{noise:1.25,depth:1},expert:{noise:0.4,depth:2},master:{noise:0.12,depth:3}};
+ const level=levels[difficulty]||levels.normal;
+ const moves=[];
+ for(const a of ["attack","expand","defend"]){const targets=options(p,a);if(a==="defend"){if(targets.length)moves.push({p,a,i:bases[p],value:evaluateMove(p,a,bases[p])});continue}
+ for(const i of targets)moves.push({p,a,i,value:evaluateMove(p,a,i)})}
+ if(!moves.length)return {p,a:"pass",i:-1};
+ moves.sort((a,b)=>b.value-a.value);
+ if(level.depth){
+  const shortlist=moves.slice(0,level.depth===1?7:level.depth===2?12:18);
+  for(const m of shortlist){
+   if(m.a==="defend")continue;
+   const after=projected(cells,p,m.a,m.i).board;
+   const opponents=Array.from({length:n},(_,q)=>q).filter(q=>q!==p&&!out[q]);
+   const predicted=[];
+   for(const q of opponents){
+    const enemyMoves=["attack","expand"].flatMap(a=>options(q,a,after).map(i=>({a,i,value:evaluateMove(q,a,i,after)})));
+    enemyMoves.sort((a,b)=>b.value-a.value);
+    if(enemyMoves[0])predicted.push({q,...enemyMoves[0]});
+   }
+   const worst=predicted.reduce((v,o)=>{
+    if(o.a==="attack"&&after[o.i].owner===p){
+     const loss=territoryCount(after,p)-territoryCount(projected(after,o.q,o.a,o.i).board,p);
+     return Math.max(v,loss*2.5+(o.i===bases[p]?110:0));
+    }
+    return v;
+   },0);
+   m.value-=worst*(level.depth===1?0.24:level.depth===2?0.5:0.75);
+   // Defence can punish attacking enemies by forcing their next turn to be skipped.
+   if(m.a==="attack"&&predicted.some(o=>o.q===cells[m.i].owner&&o.a==="defend"))m.value-=1;
+  }
+ }
+ moves.sort((a,b)=>(b.value+Math.random()*level.noise)-(a.value+Math.random()*level.noise));
+ return {p:moves[0].p,a:moves[0].a,i:moves[0].i};
+}
 function connectedSweep(){for(let p=0;p<n;p++){if(out[p])continue;const base=bases[p];if(cells[base].owner!==p){out[p]=true;cells.forEach(c=>{if(c.owner===p)c.owner=-1});logs.push(COLORS[p]+" 중심 기지 함락 · 탈락");continue}const found=new Set([base]),queue=[base];while(queue.length){for(const j of neighbors(queue.shift()))if(cells[j].owner===p&&!found.has(j)){found.add(j);queue.push(j)}}let gone=0;cells.forEach((c,i)=>{if(c.owner===p&&!found.has(i)){c.owner=-1;gone++}});if(gone)logs.push(COLORS[p]+" 단절 영토 "+gone+"칸 소멸")}}
 function resolve(){for(let p=0;p<n;p++){if(penalty[p]&&orders[p]?.a==="pass")penalty[p]=0}const old=cells.map(c=>({...c})),all=orders.filter(Boolean),guarded=new Set(all.filter(o=>o.a==="defend").map(o=>o.p)),claims=new Map();all.filter(o=>o.a==="attack"||o.a==="expand").forEach(o=>{if(!valid(o.p,o.a,o.i,old))return;const arr=claims.get(o.i)||[];arr.push(o);claims.set(o.i,arr)});const notes=[];claims.forEach((arr,i)=>{if(arr.length>1){notes.push("칸 "+i+" 충돌");return}const o=arr[0],defender=old[i].owner;if(defender>=0&&guarded.has(defender)){penalty[o.p]=1;notes.push(COLORS[defender]+" 방어 성공! "+COLORS[o.p]+" 다음 턴 행동 불가");return}cells[i].owner=o.p;notes.push(COLORS[o.p]+" "+(o.a==="attack"?"공격":"확장")+" 성공")});logs.push("턴 "+turn+": "+(notes.join(" · ")||"점령 없음"));connectedSweep();const alive=out.filter(x=>!x).length;if(alive<=1||turn>=maxTurn){finish();return}turn++;orders=[];current=0;chooseStart()}
 function advance(){if(current>=n-1){resolve();return}current++;chooseStart()}
-function finish(){phase="finished";let scores=Array.from({length:n},(_,p)=>out[p]?-1:score(p)),best=Math.max(...scores),winners=scores.map((s,p)=>s===best?COLORS[p]:null).filter(Boolean);$("winner").textContent=winners.join(" · ")+(winners.length>1?" 공동 승리!":" 승리!")+" (최고 "+best+"점)";setMessage("모든 턴이 종료됐어!");render()}
+function finish(){phase="finished";let scores=Array.from({length:n},(_,p)=>out[p]?-1:score(p)),best=Math.max(...scores),winners=scores.map((s,p)=>s===best?COLORS[p]:null).filter(Boolean);$("winner").textContent=winners.join(" · ")+(winners.length>1?" 공동 승리!":" 승리!")+" (종료 시점 "+best+"점)";setMessage("모든 턴이 종료됐어!");render()}
 function commit(){if(phase!=="choosing"||target===null)return;if(mode.startsWith("online")){window.dispatchEvent(new CustomEvent("territory:order",{detail:{p:onlinePlayer,a:action,i:target,turn}}));return;}orders[current]={p:current,a:action,i:target};if(mode==="solo"){orders[1]=ai(1);resolve();return}advance()}
 document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;$("onlineLobby").classList.toggle("hidden",!mode.startsWith("online"));$("start").classList.toggle("hidden",mode.startsWith("online"));document.querySelectorAll("[data-mode]").forEach(x=>x.classList.toggle("active",x===b));$("difficulty").disabled=mode!=="solo"});
 document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>{action=b.dataset.action;target=null;$("commit").disabled=true;render();setMessage(action==="expand"?"중립 칸 선택":action==="attack"?"상대 칸 선택":"내 영토 한 칸 선택")});
-$("start").onclick=()=>{n=["local4","online4"].includes(mode)?4:2;turn=1;maxTurn=Number($("rounds").value);difficulty=$("difficulty").value;current=0;orders=[];logs=[];generate($("maptype").value);$("setup").classList.add("hidden");$("game").classList.remove("hidden");chooseStart()};
+$("start").onclick=()=>{n=["local4","online4"].includes(mode)?4:2;turn=1;maxTurn=Math.max(10,Math.min(60,Math.round(Number($("rounds").value)||20)));$("rounds").value=maxTurn;difficulty=$("difficulty").value;current=0;orders=[];logs=[];generate($("maptype").value);$("setup").classList.add("hidden");$("game").classList.remove("hidden");chooseStart()};
 $("commit").onclick=commit;$("restart").onclick=()=>{phase="setup";$("setup").classList.remove("hidden");$("game").classList.add("hidden")};
 window.TerritoryBridge={
- config:()=>({rounds:Number($("rounds").value),difficulty:$("difficulty").value,maptype:$("maptype").value,players:mode==="online4"?4:2}),
- init:(config)=>{mode=config.players===4?"online4":"online2";n=config.players;maxTurn=config.rounds;turn=1;current=0;orders=[];logs=[];generate(config.maptype);phase="choosing";$("setup").classList.add("hidden");$("game").classList.remove("hidden");render()},
+ config:()=>({rounds:Math.max(10,Math.min(60,Math.round(Number($("rounds").value)||20))),difficulty:$("difficulty").value,maptype:$("maptype").value,players:mode==="online4"?4:2}),
+ init:(config)=>{mode=config.players===4?"online4":"online2";n=config.players;maxTurn=Math.max(10,Math.min(60,Number(config.rounds)||20));turn=1;current=0;orders=[];logs=[];generate(config.maptype);phase="choosing";$("setup").classList.add("hidden");$("game").classList.remove("hidden");render()},
  snapshot:()=>({cells,bases,out,penalty,turn,maxTurn,logs,phase,n}),
- apply:(state,p)=>{cells=state.cells;bases=state.bases;out=state.out;penalty=state.penalty;turn=state.turn;maxTurn=state.maxTurn;logs=state.logs||[];phase=state.phase;n=state.n;current=p;onlinePlayer=p;target=null;action="expand";$("commit").disabled=true;setMessage(phase==="finished"?"게임 종료":out[p]?"중심 기지 함락! 관전 중":penalty[p]?"방어 반격으로 이번 턴은 행동할 수 없어.":"명령을 선택하고 제출해.");if(phase==="finished"){const scores=Array.from({length:n},(_,q)=>out[q]?-1:score(q)),best=Math.max(...scores);$("winner").textContent=scores.map((v,q)=>v===best?COLORS[q]:null).filter(Boolean).join(", ")+" 승리!";}render()},
+ apply:(state,p)=>{cells=state.cells;bases=state.bases;out=state.out;penalty=state.penalty;turn=state.turn;maxTurn=state.maxTurn;logs=state.logs||[];phase=state.phase;n=state.n;current=p;onlinePlayer=p;target=null;action="expand";$("commit").disabled=true;setMessage(phase==="finished"?"게임 종료":out[p]?"중심 기지 함락! 관전 중":penalty[p]?"방어 반격으로 이번 턴은 행동할 수 없어.":"명령을 선택하고 제출해.");if(phase==="finished"){const scores=Array.from({length:n},(_,q)=>out[q]?-1:score(q)),best=Math.max(...scores);$("winner").textContent=scores.map((v,q)=>v===best?COLORS[q]:null).filter(Boolean).join(", ")+" 승리! · 종료 시점 "+best+"점";}render()},
  resolve:(state,ordersIn)=>{cells=state.cells.map(c=>({...c}));bases=state.bases;out=[...state.out];penalty=[...state.penalty];turn=state.turn;maxTurn=state.maxTurn;logs=[...(state.logs||[])];n=state.n;orders=ordersIn;mode="online"+n;resolve();return {cells,bases,out,penalty,turn,maxTurn,logs,phase,n}},
  status:(s)=>setMessage(s)
 };
